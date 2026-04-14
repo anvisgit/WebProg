@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Demo</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .box {
+            padding: 10px;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>JavaScript</h2>
+<button onclick="sayHello()">Click Me</button>
+
+<p id="demo">Hello World</p>
+
+<!-- FORM -->
+<form id="myForm">
+
+<fieldset>
+<legend>Student Form</legend>
+
+Name: <input type="text" id="name" onchange="nameChanged()"><br><br>
+
+Email: <input type="text" id="email"><br><br>
+
+<!-- RADIO -->
+Gender:
+<input type="radio" name="gender" value="Male"> Male
+<input type="radio" name="gender" value="Female"> Female
+<br><br>
+
+<!-- CHECKBOX -->
+Skills:
+<input type="checkbox" value="HTML"> HTML
+<input type="checkbox" value="CSS"> CSS
+<input type="checkbox" value="JS"> JS
+<br><br>
+
+Country:
+<select id="country">
+    <option>India</option>
+    <option>USA</option>
+</select>
+<br><br>
+
+<textarea id="about" rows="3"></textarea>
+
+<br><br>
+
+<button type="button" onclick="submitForm()">Submit</button>
+<button type="button" onclick="resetForm()">Reset</button>
+
+</fieldset>
+</form>
+
+<!-- MOUSE EVENTS -->
+<div class="box" onmouseover="hover()" onmouseout="out()">
+    Hover over me
+</div>
+
+<p id="output"></p>
+
+<script>
+
+// ======================
+// VARIABLES + OBJECT
+// ======================
+let student = {
+    name: "",
+    email: ""
+};
+
+// ======================
+// FUNCTION
+// ======================
+function sayHello() {
+    alert("Hello World!");
+}
+
+// ======================
+// DOM MANIPULATION
+// ======================
+document.getElementById("demo").innerHTML = "DOM Updated!";
+
+// ======================
+// EVENT: onchange
+// ======================
+function nameChanged() {
+    alert("Name changed!");
+}
+
+// ======================
+// FORM SUBMIT
+// ======================
+function submitForm() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+
+    student.name = name;
+    student.email = email;
+
+    // RADIO
+    let gender = "";
+    let radios = document.getElementsByName("gender");
+
+    for (let r of radios) {
+        if (r.checked) {
+            gender = r.value;
+        }
+    }
+
+    // CHECKBOX
+    let skills = "";
+    let checkboxes = document.querySelectorAll("input[type=checkbox]");
+
+    checkboxes.forEach(c => {
+        if (c.checked) {
+            skills += c.value + " ";
+        }
+    });
+
+    // OUTPUT
+    document.getElementById("output").innerHTML =
+        "Name: " + name +
+        "<br>Email: " + email +
+        "<br>Gender: " + gender +
+        "<br>Skills: " + skills;
+
+    // CSS MANIPULATION
+    document.getElementById("output").style.color = "blue";
+}
+
+// ======================
+// RESET + FOCUS
+// ======================
+function resetForm() {
+    document.getElementById("myForm").reset();
+    document.getElementById("name").focus();
+}
+
+// ======================
+// MOUSE EVENTS
+// ======================
+function hover() {
+    document.body.style.background = "lightyellow";
+}
+
+function out() {
+    document.body.style.background = "white";
+}
+
+// ======================
+// LOOPS
+// ======================
+
+// FOR LOOP
+for (let i = 0; i < 3; i++) {
+    console.log("For loop:", i);
+}
+
+// DO-WHILE LOOP
+let i = 0;
+do {
+    console.log("Do while:", i);
+    i++;
+} while (i < 3);
+
+</script>
+
+</body>
+</html>

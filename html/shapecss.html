@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Shapes</title>
+  <style>
+    body { display: flex; flex-wrap: wrap; gap: 30px; padding: 40px;
+           font-family: Arial; background: #f5f5f5; }
+    .shape-box { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    span { font-size: 13px; color: #555; font-weight: bold; }
+
+    /* 1. SQUARE */
+    .square { width: 100px; height: 100px; background: #1F4E79; }
+
+    /* 2. RECTANGLE */
+    .rectangle { width: 150px; height: 80px; background: #2E75B6; }
+
+    /* 3. CIRCLE — border-radius: 50% on equal width/height */
+    .circle { width: 100px; height: 100px; background: #e74c3c;
+              border-radius: 50%; }
+
+    /* 4. OVAL / ELLIPSE */
+    .oval { width: 150px; height: 80px; background: #27ae60;
+            border-radius: 50%; }
+
+    /* 5. TRIANGLE (pointing up) — border trick */
+    .triangle-up {
+      width: 0; height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid #e67e22;
+    }
+
+    /* 6. TRIANGLE (pointing right) */
+    .triangle-right {
+      width: 0; height: 0;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 100px solid #9b59b6;
+    }
+
+    /* 7. DIAMOND — rotated square */
+    .diamond {
+      width: 80px; height: 80px;
+      background: #f39c12;
+      transform: rotate(45deg);
+    }
+
+    /* 8. PARALLELOGRAM — skewX transform */
+    .parallelogram {
+      width: 130px; height: 60px;
+      background: #16a085;
+      transform: skewX(-20deg);
+    }
+
+    /* 9. STAR (5-point) using clip-path */
+    .star {
+      width: 100px; height: 100px;
+      background: #e74c3c;
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%,
+                         79% 91%, 50% 70%, 21% 91%, 32% 57%,
+                         2% 35%, 39% 35%);
+    }
+
+    /* 10. PENTAGON */
+    .pentagon {
+      width: 100px; height: 100px;
+      background: #2980b9;
+      clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+    }
+
+    /* 11. HEART using :before and :after */
+    .heart {
+      position: relative; width: 100px; height: 90px;
+    }
+    .heart::before, .heart::after {
+      content: ""; position: absolute;
+      top: 0; width: 50px; height: 80px;
+      background: #e74c3c; border-radius: 50px 50px 0 0;
+    }
+    .heart::before { left: 50px; transform: rotate(-45deg);
+                     transform-origin: 0 100%; }
+    .heart::after  { left: 0;    transform: rotate(45deg);
+                     transform-origin: 100% 100%; }
+  </style>
+</head>
+<body>
+  <div class="shape-box"><div class="square"></div><span>Square</span></div>
+  <div class="shape-box"><div class="rectangle"></div><span>Rectangle</span></div>
+  <div class="shape-box"><div class="circle"></div><span>Circle</span></div>
+  <div class="shape-box"><div class="oval"></div><span>Oval</span></div>
+  <div class="shape-box"><div class="triangle-up"></div><span>Triangle Up</span></div>
+  <div class="shape-box"><div class="triangle-right"></div><span>Triangle Right</span></div>
+  <div class="shape-box"><div class="diamond"></div><span>Diamond</span></div>
+  <div class="shape-box"><div class="parallelogram"></div><span>Parallelogram</span></div>
+  <div class="shape-box"><div class="star"></div><span>Star</span></div>
+  <div class="shape-box"><div class="pentagon"></div><span>Pentagon</span></div>
+  <div class="shape-box"><div class="heart"></div><span>Heart</span></div>
+</body>

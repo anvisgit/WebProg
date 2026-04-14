@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Form</title>
+
+    <style>
+        body {
+            background: #f2f6ff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: Arial;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            width: 350px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<form id="form" onsubmit="return validate()">
+
+<h2>Form</h2>
+
+<label>Name</label>
+<input type="text" id="name">
+<div id="nameErr" class="error"></div>
+
+<label>Email</label>
+<input type="text" id="email">
+<div id="emailErr" class="error"></div>
+
+<label>Password</label>
+<input type="password" id="pass">
+<div id="passErr" class="error"></div>
+
+<label>Gender</label>
+<input type="radio" name="g" value="Male"> Male
+<input type="radio" name="g" value="Female"> Female
+
+<label>Skills</label>
+<input type="checkbox" id="html" value="HTML"> HTML
+<input type="checkbox" id="css" value="CSS"> CSS
+
+<button type="submit">Submit</button>
+<button type="button" onclick="resetForm()">Reset</button>
+
+</form>
+
+<script>
+
+function validate() {
+
+    let valid = true;
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("pass").value;
+
+    document.getElementById("nameErr").innerText = "";
+    document.getElementById("emailErr").innerText = "";
+    document.getElementById("passErr").innerText = "";
+
+    if (name.length < 3) {
+        document.getElementById("nameErr").innerText = "Min 3 chars";
+        valid = false;
+    }
+
+    if (!email.includes("@")) {
+        document.getElementById("emailErr").innerText = "Invalid email";
+        valid = false;
+    }
+
+    if (pass.length < 6) {
+        document.getElementById("passErr").innerText = "Min 6 chars";
+        valid = false;
+    }
+
+    // RADIO
+    let gender = "";
+    let radios = document.getElementsByName("g");
+
+    for (let r of radios) {
+        if (r.checked) gender = r.value;
+    }
+
+    // CHECKBOX (no querySelector)
+    let skills = "";
+
+    if (document.getElementById("html").checked)
+        skills += "HTML ";
+
+    if (document.getElementById("css").checked)
+        skills += "CSS ";
+
+    if (valid) {
+        alert("Submitted\nGender: " + gender + "\nSkills: " + skills);
+    }
+
+    return valid;
+}
+
+function resetForm() {
+    document.getElementById("form").reset();
+    document.getElementById("name").focus();
+}
+
+</script>
+
+</body>
+</html>

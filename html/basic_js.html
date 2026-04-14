@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS </title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        .box {
+            border: 1px solid black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>JavaScript </h2>
+
+<button onclick="sayHello()">Click Me</button>
+
+<p id="text">Hello</p>
+
+<input type="text" id="inputBox" placeholder="Type something">
+<button onclick="addItem()">Add</button>
+
+<ul id="list"></ul>
+
+<button onclick="toggleBox()">Toggle Box</button>
+<div id="box" class="box">I am visible</div>
+
+<!-- API -->
+<button onclick="getData()">Fetch Data</button>
+<p id="api"></p>
+
+<script>
+
+// VARIABLES
+let count = 0;
+
+// FUNCTION
+function sayHello() {
+    alert("Hello World!");
+}
+
+document.getElementById("text").innerHTML = "Updated Text";
+
+function addItem() {
+    let val = document.getElementById("inputBox").value;
+
+    if (val === "") return;
+
+    let li = document.createElement("li");
+    li.innerText = val;
+
+    li.onclick = function() {
+        li.remove();
+    };
+
+    document.getElementById("list").appendChild(li);
+}
+
+function toggleBox() {
+    document.getElementById("box").classList.toggle("hidden");
+}
+
+for (let i = 0; i < 3; i++) {
+    console.log("For:", i);
+}
+
+
+let user = {
+    name: "Anvi",
+    age: 19
+};
+
+console.log(user.name);
+
+// LOCAL STORAGE
+localStorage.setItem("user", "Anvi");
+
+
+</script>
+
+</body>
+</html>

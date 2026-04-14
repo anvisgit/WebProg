@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML CSS Basics</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+        .navbar {
+            background: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .hero {
+            height: 200px;
+            background: lightblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px;
+            border: none;
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div>MySite</div>
+    <div>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Welcome</h1>
+</div>
+
+<div class="container">
+
+    <h2>About</h2>
+    <p>This is a simple HTML CSS page.</p>
+
+    <img src="placeholder.com">
+
+    <div class="card">
+        <h3>Card Title</h3>
+        <p>Some content here.</p>
+        <button>Click</button>
+    </div>
+
+</div>
+
+</body>
+</html>

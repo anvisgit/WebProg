@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML FORM</title>
+
+    <style>
+body {
+    background: #f2f6ff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+button {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background: green;
+    color: white;
+}
+
+button[type="reset"] {
+    background: red;
+    color: white;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+    </style>
+</head>
+
+<body>
+
+<form id="myForm" onsubmit="return validateForm()">
+
+    <h2>FORM STUDENT</h2>
+
+    <label>Full Name</label>
+    <input type="text" id="name">
+    <div class="error" id="nameError"></div>
+
+    <label>Email</label>
+    <input type="text" id="email">
+    <div class="error" id="emailError"></div>
+
+    <label>Password</label>
+    <input type="password" id="pass">
+    <div class="error" id="passError"></div>
+
+    <label>Age</label>
+    <input type="number" id="age">
+
+    <label>Date of Birth</label>
+    <input type="date" id="dob">
+
+    <label>Gender</label>
+    <input type="radio" name="gender" value="male"> Male
+    <input type="radio" name="gender" value="female"> Female
+    <input type="radio" name="gender" value="other"> Other
+
+    <label>Skills</label>
+    <input type="checkbox" value="html"> HTML
+    <input type="checkbox" value="css"> CSS
+    <input type="checkbox" value="js"> JavaScript
+
+    <label>Upload Resume</label>
+    <input type="file">
+
+    <label>Country</label>
+    <select id="country">
+        <option value="">Select</option>
+        <option>India</option>
+        <option>USA</option>
+        <option>UK</option>
+    </select>
+
+    <label>About You</label>
+    <textarea rows="5"></textarea>
+
+    <div class="btn-container">
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </div>
+
+</form>
+
+<script>
+function validateForm() {
+
+    let valid = true;
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("pass").value;
+
+    document.getElementById("nameError").innerText = "";
+    document.getElementById("emailError").innerText = "";
+    document.getElementById("passError").innerText = "";
+
+    if (name.length < 3) {
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters";
+        valid = false;
+    }
+
+    if (!email.includes("@")) {
+        document.getElementById("emailError").innerText = "Enter a valid email";
+        valid = false;
+    }
+
+    if (pass.length < 6) {
+        document.getElementById("passError").innerText = "Password must be at least 6 characters";
+        valid = false;
+    }
+
+    if (valid) {
+        alert("Form submitted successfully!");
+    }
+
+    return valid; 
+}
+</script>
+
+</body>
+</html>
