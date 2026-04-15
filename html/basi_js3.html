@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font-family: Arial; justify-content: center; display: flex;}
+.error { color: red; font-size: 12px; }
+</style>
+</head>
+
+<body>
+
+<form onsubmit="return validate()">
+
+Name: <input type="text" id="name" onchange="checkName()">
+<span id="nameErr" class="error"></span><br><br>
+
+Email: <input type="text" id="email">
+<span id="emailErr" class="error"></span><br><br>
+
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+function checkName() {
+    let name = document.getElementById("name").value;
+    if (name.length < 3)
+        document.getElementById("nameErr").innerText = "Too short";
+    else
+        document.getElementById("nameErr").innerText = "";
+}
+
+function validate() {
+    let email = document.getElementById("email").value;
+    if (!email.includes("@")) {
+        document.getElementById("emailErr").innerText = "Invalid";
+        return false;
+    }
+    return true;
+}
+</script>
+
+</body>
+</html>
